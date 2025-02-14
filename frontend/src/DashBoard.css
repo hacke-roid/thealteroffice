@@ -1,0 +1,215 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-image: linear-gradient(purple, skyblue);
+  padding: 20px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.top_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 500px;
+  border-bottom: 1px solid gray;
+  margin-bottom: 20px;
+}
+
+/* User Details */
+.user-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 20px;
+  /* border: 2px solid black; */
+}
+
+.img_container {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  /* display: inline-block; */
+  cursor: pointer;
+}
+
+.logout-btn {
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  /* border: 2px solid black; */
+  top: 100%;
+  right: 0;
+  left: 10;
+  margin-top: 8px;
+  /* background-color: ; */
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+.img_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Form Container */
+.form_container {
+  /* border: 2px solid black; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* width: auto; */
+  /* gap: 15px; */
+  /* width: 100%; */
+  /* max-width: 400px; */
+}
+
+.form_container input {
+  height: 50px;
+  width: 90%;
+  border-radius: 10px;
+  margin: 10px;
+  outline: none;
+  border: none;
+  padding-left: 10px;
+  font-size: medium;
+}
+
+.form_container button {
+  height: 50px;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+  border: none;
+  background-color: green;
+  color: whitesmoke;
+  font-size: medium;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.form_container button:hover {
+  background-color: darkgreen;
+}
+
+/* Table Container */
+.table-container {
+  width: 90%;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+td a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    height: auto;
+    padding: 15px;
+  }
+
+  .top_container {
+    gap: 20px;
+    /* width: 280px; */
+  }
+
+  .form_container {
+    width: 330px;
+  }
+
+  .form_container input {
+    width: 90%;
+    font-size: small;
+  }
+
+  .form_container button {
+    width: 100%;
+    height: 45px;
+    font-size: small;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .img_container {
+    height: 50px;
+    width: 50px;
+  }
+
+  .form_container input {
+    width: 90%;
+    height: 45px;
+    font-size: small;
+  }
+
+  .form_container button {
+    width: 100%;
+    height: 40px;
+    font-size: small;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  th,
+  td {
+    padding: 6px;
+  }
+}
