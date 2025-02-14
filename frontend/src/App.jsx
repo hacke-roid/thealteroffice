@@ -21,7 +21,7 @@ function App() {
           const payload = credential ? decodeJwt(credential) : undefined;
           if (payload) {
             axios
-              .get(`http://localhost:5000/api/auth/login`, {
+              .get(`${process.env.BACK_END_URL}/api/auth/login`, {
                 headers: {
                   Authorization: `Bearer ${credential}`,
                 },

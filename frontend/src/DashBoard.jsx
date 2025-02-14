@@ -19,7 +19,7 @@ const DashBoard = () => {
     try {
       let userId = localStorage.getItem("userId");
       console.log(userId);
-      let response = await axios.get(`http://localhost:5000/user/${userId}`);
+      let response = await axios.get(`${process.env.BACK_END_URL}/user/${userId}`);
       // console.log(response);
       // setUser(response.data);
       setResponse(response.data.user.url);
@@ -35,7 +35,7 @@ const DashBoard = () => {
       let {
         data: { user },
       } = await axios.get(
-        `http://localhost:5000/api/auth/userdetails/${userId}`
+        `${process.env.BACK_END_URL}/api/auth/userdetails/${userId}`
       );
       console.log(user);
       setUser(user);
@@ -52,7 +52,7 @@ const DashBoard = () => {
     e.preventDefault();
     console.log(url);
     let userId = localStorage.getItem("userId");
-    let response = await axios.post(`http://localhost:5000/shorten`, {
+    let response = await axios.post(`${process.env.BACK_END_URL}/shorten`, {
       userId: userId,
       longUrl: url.longUrl,
       customAlias: url.customAlias,
@@ -135,7 +135,7 @@ const DashBoard = () => {
                   <td>{response.customAlias}</td>
                   <td>{response.longUrl}</td>
                   <td>
-                    <Link to={`http://localhost:5000/${response.shortUrl}`}>
+                    <Link to={`${process.env.BACK_END_URL}/${response.shortUrl}`}>
                       {response.shortUrl}
                     </Link>
                   </td>
