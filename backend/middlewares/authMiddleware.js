@@ -7,7 +7,8 @@ const client = new OAuth2Client(
 
 const verifyGoogleToken = async (req, res, next) => {
   const authHeader = req.headers.authorization;
-  //   console.log(token);
+    // console.log(token);
+
   if (!authHeader) {
     next(createError.Unauthorized());
   }

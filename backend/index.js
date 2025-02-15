@@ -14,7 +14,6 @@ const app = express();
 app.use(express.json());
 
 //^cors middleware
-
 app.use(
   cors({
     origin: [
@@ -26,7 +25,7 @@ app.use(
     credentials: true,
   })
 );
-// app.options("*", cors());
+app.options("*", cors());
 app.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
@@ -66,4 +65,6 @@ mongoose
   .catch((err) => console.error("❌ MongoDB Error:", err));
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`🚀 Server running on port http://localhost:${PORT}`)
+);

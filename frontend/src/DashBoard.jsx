@@ -5,7 +5,7 @@ import { MyContext } from "./MyContext/ContextApi";
 import { Link, useNavigate } from "react-router-dom";
 
 const DashBoard = () => {
-  const navigation = useNavigate()
+  const navigation = useNavigate();
   const [url, setUrl] = useState({
     longUrl: "",
     customAlias: "",
@@ -13,13 +13,18 @@ const DashBoard = () => {
   const [user, setUser] = useState({});
   const [response, setResponse] = useState([]);
   const [hover, setHover] = useState(false);
+
+  let backendUrl = process.env.REACT_APP_BACKEND_URL;
+  console.log(backendUrl);
   // console.log(user);
 
   const getData = async () => {
     try {
       let userId = localStorage.getItem("userId");
       console.log(userId);
-      let response = await axios.get(`${process.env.BACK_END_URL}/user/${userId}`);
+      let response = await axios.get(
+        `${backendUrl}/user/${userId}`
+      );
       // console.log(response);
       // setUser(response.data);
       setResponse(response.data.user.url);
@@ -35,7 +40,7 @@ const DashBoard = () => {
       let {
         data: { user },
       } = await axios.get(
-        `${process.env.BACK_END_URL}/api/auth/userdetails/${userId}`
+        `${backendUrl}/api/auth/userdetails/${userId}`
       );
       console.log(user);
       setUser(user);
@@ -52,11 +57,14 @@ const DashBoard = () => {
     e.preventDefault();
     console.log(url);
     let userId = localStorage.getItem("userId");
-    let response = await axios.post(`${process.env.BACK_END_URL}/shorten`, {
-      userId: userId,
-      longUrl: url.longUrl,
-      customAlias: url.customAlias,
-    });
+    let response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/shorten`,
+      {
+        userId: userId,
+        longUrl: url.longUrl,
+        customAlias: url.customAlias,
+      }
+    );
     console.log(response);
     getData();
     // let shortUrl = response.data.urlData.url;
@@ -135,7 +143,9 @@ const DashBoard = () => {
                   <td>{response.customAlias}</td>
                   <td>{response.longUrl}</td>
                   <td>
-                    <Link to={`${process.env.BACK_END_URL}/${response.shortUrl}`}>
+                    <Link
+                      to={`${process.env.REACT_APP_BACKEND_URL}/${response.shortUrl}`}
+                    >
                       {response.shortUrl}
                     </Link>
                   </td>

@@ -10,6 +10,8 @@ function App() {
   // const [user, setUser] = useState(null);
   const navigation = useNavigate();
   let { setData, setIsLogin } = useContext(MyContext);
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  console.log(backendUrl);
 
   return (
     <div className="login_container">
@@ -21,7 +23,7 @@ function App() {
           const payload = credential ? decodeJwt(credential) : undefined;
           if (payload) {
             axios
-              .get(`${process.env.BACK_END_URL}/api/auth/login`, {
+              .get(`${backendUrl}/api/auth/login`, {
                 headers: {
                   Authorization: `Bearer ${credential}`,
                 },
